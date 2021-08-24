@@ -14,8 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strictPropertyInitialization": false,
     "paths": {
-      "@education/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@education/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@education/core-data": ["libs/core-data/src/index.ts"],
+      "@education/core-state": ["libs/core-state/src/index.ts"],
+      "@education/material": ["libs/material/src/index.ts"],
+      "@education/the": ["libs/the/src/index.ts"],
+      "@education/theme": ["libs/theme/src/index.ts"],
+      "@education/ui-library": ["libs/ui-library/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

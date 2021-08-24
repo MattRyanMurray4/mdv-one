@@ -1,0 +1,81 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="currentCourse.id; else createNewCourse">
+      Update : {{ originalName }}
+    </mat-card-title>
+  </mat-card-header>
+  <ng-template #createNewCourse>
+    <h1>Create a New Course</h1>
+  </ng-template>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Class Name</mat-label>
+        <input
+          matInput
+          placeholder="Class Name"
+          formControlName="className"
+          type="text"
+          name="className"
+        />
+        <mat-error *ngIf="form.get('className')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Teacher</mat-label>
+        <input
+          matInput
+          placeholder="Teacher"
+          formControlName="teacher"
+          type="text"
+          name="teacher"
+        />
+        <mat-error *ngIf="form.get('teacher')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          placeholder="Description"
+          formControlName="description"
+          type="text"
+          name="description"
+        />
+        <mat-error *ngIf="form.get('description')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Class Size</mat-label>
+        <input
+          matInput
+          placeholder="Class Size"
+          formControlName="classSize"
+          type="number"
+          name="classSize"
+        />
+        <mat-error *ngIf="form.get('classSize')">Required Field</mat-error>
+      </mat-form-field>
+      <section class="full-width">
+        <mat-label>
+          Fail-Rate: {{ this.form.get('failRate')?.value }} %
+        </mat-label>
+        <mat-slider
+          class="full-width"
+          formControlName="failRate"
+          min="0"
+          max="100"
+          thumbLabel
+          tickInterval="1"
+        ></mat-slider>
+      </section>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-button [disabled]="form.invalid">
+        {{ currentCourse.id ? 'Submit' : 'Update' }}
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

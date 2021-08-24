@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <education-courses-list
+      [courses]="courses$ | async"
+      (selected)="selectCourse($event)"
+      (deleted)="deleteCourse($event)"
+    ></education-courses-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <education-course-details
+      [form]="form"
+      [course]="selectedCourse$ | async"
+      (saved)="saveCourse($event)"
+      (cancelled)="cancel()"
+    >
+    </education-course-details>
+  </div>
+</div>
