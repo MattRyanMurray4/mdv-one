@@ -73,7 +73,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button type="submit" mat-button [disabled]="form.invalid">
-        {{ currentCourse.id ? 'Submit' : 'Update' }}
+        {{ currentCourse.id ? 'Create' : 'Submit' }}
       </button>
       <button type="button" mat-button (click)="cancel()">Cancel</button>
     </mat-card-actions>
