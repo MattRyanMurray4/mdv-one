@@ -33,7 +33,9 @@ export class CoursesFacade {
         tap((courseId) => this._selectedCourseSource$.next(courseId)),
         take(1)
       )
-      .subscribe();
+      .subscribe(() => {
+        this.loadCourses();
+      });
   }
 
   createCourse(course: Course) {
@@ -43,7 +45,10 @@ export class CoursesFacade {
         tap((course) => this._selectedCourseSource$.next(course)),
         take(1)
       )
-      .subscribe();
+      .subscribe(() => {
+        this.loadCourses();
+        this.notify.notification(`Created ${course.className} success.`);
+      });
   }
 
   updateCourse(course: Course) {
@@ -53,7 +58,10 @@ export class CoursesFacade {
         tap((course) => this._selectedCourseSource$.next(course)),
         take(1)
       )
-      .subscribe();
+      .subscribe(() => {
+        this.loadCourses();
+        this.notify.notification(`Updated ${course.className} success.`);
+      });
   }
 
   deleteCourse(course: Course) {
@@ -63,6 +71,9 @@ export class CoursesFacade {
         tap((course) => this._selectedCourseSource$.next(course)),
         take(1)
       )
-      .subscribe();
+      .subscribe(() => {
+        this.loadCourses();
+        this.notify.notification(`Deleted ${course.className} success.`);
+      });
   }
 }
